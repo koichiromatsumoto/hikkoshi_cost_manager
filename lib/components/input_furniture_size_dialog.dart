@@ -39,197 +39,198 @@ Future<void> inputFurnitureSizeDialog(BuildContext context, {Furniture? furnitur
         new TextEditingController(text: initialFurnitureDepth);
         final TextEditingController _furnitureRemarkController =
         new TextEditingController(text: initialFurnitureRemark);
-        return AlertDialog(
-          title: Text("寸法を記録"),
-          content: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxHeight: 400.0,
-            ),
-            child: Form(
-              key: _formKey,
-              child: Column(children: <Widget>[
-                TextFormField(
-                  controller: _furnitureNameController,
-                  decoration: InputDecoration(
-                    labelText: "家具家電名",
-                    border: OutlineInputBorder(),
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 0,
-                      horizontal: 15,
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: () => _furnitureNameController.clear(),
-                      icon: Icon(Icons.clear),
-                    ),
-                  ),
-                  keyboardType: TextInputType.text,
-                  inputFormatters: [
-                    LengthLimitingTextInputFormatter(12),
-                  ],
-                  onChanged: (value) {
-                    furnitureName = value;
-                  },
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return '家具家電名を入力してください';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 10),
-                TextFormField(
-                  controller: _furnitureWidthController,
-                  decoration: InputDecoration(
-                    labelText: "幅",
-                    border: OutlineInputBorder(),
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 0,
-                      horizontal: 15,
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: () => _furnitureWidthController.clear(),
-                      icon: Icon(Icons.clear),
-                    ),
-                  ),
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
-                    LengthLimitingTextInputFormatter(7),
-                  ],
-                  onChanged: (value) {
-                    furnitureWidth = value;
-                  },
-                ),
-                SizedBox(height: 10),
-                TextFormField(
-                  controller: _furnitureHeightController,
-                  decoration: InputDecoration(
-                    labelText: "高さ",
-                    border: OutlineInputBorder(),
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 0,
-                      horizontal: 15,
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: () => _furnitureHeightController.clear(),
-                      icon: Icon(Icons.clear),
-                    ),
-                  ),
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
-                    LengthLimitingTextInputFormatter(7),
-                  ],
-                  onChanged: (value) {
-                    furnitureHeight = value;
-                  },
-                ),
-                SizedBox(height: 10),
-                TextFormField(
-                  controller: _furnitureDepthController,
-                  decoration: InputDecoration(
-                    labelText: "奥行",
-                    border: OutlineInputBorder(),
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 0,
-                      horizontal: 15,
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: () => _furnitureDepthController.clear(),
-                      icon: Icon(Icons.clear),
-                    ),
-                  ),
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
-                    LengthLimitingTextInputFormatter(7),
-                  ],
-                  onChanged: (value) {
-                    furnitureDepth = value;
-                  },
-                ),
-                SizedBox(height: 10),
-                TextFormField(
-                  controller: _furnitureRemarkController,
-                  decoration: InputDecoration(
-                    labelText: "備考",
-                    border: OutlineInputBorder(),
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 0,
-                      horizontal: 15,
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: () => _furnitureRemarkController.clear(),
-                      icon: Icon(Icons.clear),
-                    ),
-                  ),
-                  keyboardType: TextInputType.text,
-                  inputFormatters: [
-                    LengthLimitingTextInputFormatter(50),
-                  ],
-                  onChanged: (value) {
-                    furnitureRemark = value;
-                  },
-                ),
-              ]),
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text(
-                'キャンセル',
-                style: TextStyle(color: Colors.blue),
+        return SingleChildScrollView(
+          child: AlertDialog(
+            title: Text("寸法を記録"),
+            content: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: 300.0,
               ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              style: TextButton.styleFrom(
-                primary: Colors.white,
+              child: Form(
+                key: _formKey,
+                child: Column(children: <Widget>[
+                  TextFormField(
+                    controller: _furnitureNameController,
+                    decoration: InputDecoration(
+                      labelText: "家具家電名",
+                      border: OutlineInputBorder(),
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical: 0,
+                        horizontal: 15,
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () => _furnitureNameController.clear(),
+                        icon: Icon(Icons.clear),
+                      ),
+                    ),
+                    keyboardType: TextInputType.text,
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(12),
+                    ],
+                    onChanged: (value) {
+                      furnitureName = value;
+                    },
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return '家具家電名を入力してください';
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 10),
+                  TextFormField(
+                    controller: _furnitureWidthController,
+                    decoration: InputDecoration(
+                      labelText: "幅",
+                      border: OutlineInputBorder(),
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical: 0,
+                        horizontal: 15,
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () => _furnitureWidthController.clear(),
+                        icon: Icon(Icons.clear),
+                      ),
+                    ),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(7),
+                    ],
+                    onChanged: (value) {
+                      furnitureWidth = value;
+                    },
+                  ),
+                  SizedBox(height: 10),
+                  TextFormField(
+                    controller: _furnitureHeightController,
+                    decoration: InputDecoration(
+                      labelText: "高さ",
+                      border: OutlineInputBorder(),
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical: 0,
+                        horizontal: 15,
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () => _furnitureHeightController.clear(),
+                        icon: Icon(Icons.clear),
+                      ),
+                    ),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(7),
+                    ],
+                    onChanged: (value) {
+                      furnitureHeight = value;
+                    },
+                  ),
+                  SizedBox(height: 10),
+                  TextFormField(
+                    controller: _furnitureDepthController,
+                    decoration: InputDecoration(
+                      labelText: "奥行",
+                      border: OutlineInputBorder(),
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical: 0,
+                        horizontal: 15,
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () => _furnitureDepthController.clear(),
+                        icon: Icon(Icons.clear),
+                      ),
+                    ),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(7),
+                    ],
+                    onChanged: (value) {
+                      furnitureDepth = value;
+                    },
+                  ),
+                  SizedBox(height: 10),
+                  TextFormField(
+                    controller: _furnitureRemarkController,
+                    decoration: InputDecoration(
+                      labelText: "備考",
+                      border: OutlineInputBorder(),
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical: 0,
+                        horizontal: 15,
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () => _furnitureRemarkController.clear(),
+                        icon: Icon(Icons.clear),
+                      ),
+                    ),
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(50),
+                    ],
+                    onChanged: (value) {
+                      furnitureRemark = value;
+                    },
+                  ),
+                ]),
               ),
             ),
-            TextButton(
-              child: Text(
-                'OK',
-                style: TextStyle(color: Colors.blue),
+            actions: <Widget>[
+              TextButton(
+                child: Text(
+                  'キャンセル',
+                  style: TextStyle(color: Colors.blue),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                ),
               ),
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  int? parsedWidth = null;
-                  int? parsedHeight = null;
-                  int? parsedDepth = null;
-                  if (furnitureWidth != null && furnitureWidth != "") {
-                    parsedWidth = int.parse(furnitureWidth!);
-                    if (parsedWidth == 0) {
-                      parsedWidth = null;
+              TextButton(
+                child: Text(
+                  'OK',
+                  style: TextStyle(color: Colors.blue),
+                ),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    int? parsedWidth = null;
+                    int? parsedHeight = null;
+                    int? parsedDepth = null;
+                    if (furnitureWidth != null && furnitureWidth != "") {
+                      parsedWidth = int.parse(furnitureWidth!);
+                      if (parsedWidth == 0) {
+                        parsedWidth = null;
+                      }
                     }
-                  }
-                  if (furnitureHeight != null && furnitureHeight != "") {
-                    parsedHeight = int.parse(furnitureHeight!);
-                    if (parsedHeight == 0) {
-                      parsedHeight = null;
+                    if (furnitureHeight != null && furnitureHeight != "") {
+                      parsedHeight = int.parse(furnitureHeight!);
+                      if (parsedHeight == 0) {
+                        parsedHeight = null;
+                      }
                     }
-                  }
-                  if (furnitureDepth  != null && furnitureDepth != "") {
-                    parsedDepth = int.parse(furnitureDepth!);
-                    if (parsedDepth == 0) {
-                      parsedDepth = null;
+                    if (furnitureDepth  != null && furnitureDepth != "") {
+                      parsedDepth = int.parse(furnitureDepth!);
+                      if (parsedDepth == 0) {
+                        parsedDepth = null;
+                      }
                     }
-                  }
-                  FurnitureRepository.create(
+                    FurnitureRepository.create(
                       name: furnitureName,
                       width: parsedWidth,
                       height: parsedHeight,
                       depth: parsedDepth,
                       remark: furnitureRemark,
-                  );
-                  Navigator.pop(context);
-                }
-              },
-              style: TextButton.styleFrom(
-                primary: Colors.white,
+                    );
+                    Navigator.pop(context);
+                  }
+                },
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       });
 }
