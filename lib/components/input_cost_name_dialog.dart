@@ -143,7 +143,7 @@ Future<void> inputCostNameDialog(
                     }
                   }
                   CostRepository.create(
-                      text: costName,
+                      name: costName,
                       type: type.typeName,
                       budgetCost: parsedBudgetCost,
                       actualCost: parsedActualCost);

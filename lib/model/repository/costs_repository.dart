@@ -2,16 +2,15 @@ import 'dart:async';
 
 import 'package:hikkoshi_cost_manager/model/db/costs_database.dart';
 import 'package:hikkoshi_cost_manager/model/entity/costs.dart';
-import 'package:sqflite/sqflite.dart';
 
 class CostRepository {
   static String table = 'costs';
   static CostsDatabase instance = CostsDatabase.instance;
 
-  static void create({text, type, int? budgetCost = null, int? actualCost = null}) async {
+  static void create({name, type, int? budgetCost = null, int? actualCost = null}) async {
     DateTime now = DateTime.now();
     final Map<String, dynamic> row = {
-      'name': text,
+      'name': name,
       'budget_cost': budgetCost,
       'actual_cost': actualCost,
       'created_at': now.toString(),
@@ -20,7 +19,7 @@ class CostRepository {
     };
 
     final db = await instance.database;
-    final id = await db.insert(table, row);
+    await db.insert(table, row);
   }
 
   static Future<List<Cost>> getAll() async {

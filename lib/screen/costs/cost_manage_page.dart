@@ -25,7 +25,6 @@ class _CostManagePageState extends State<CostManagePage> {
 
   @override
   Widget build(BuildContext context) {
-    final deviceWidth = MediaQuery.of(context).size.width;
     var futureBuilder = FutureBuilder(
       future: CostRepository.getAll(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
