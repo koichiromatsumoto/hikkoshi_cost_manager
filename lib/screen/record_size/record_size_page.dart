@@ -85,6 +85,10 @@ class _RecordSizePageState extends State<RecordSizePage> {
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemBuilder: (BuildContext context, int index) {
+                    final furnitureWidthStr = furnitures[index].width != null ? furnitures[index].width.toString() : "";
+                    final furnitureHeightStr = furnitures[index].height != null ? furnitures[index].height.toString() : "";
+                    final furnitureDepthStr = furnitures[index].depth != null ? furnitures[index].depth.toString() : "";
+                    final furnitureRemark = furnitures[index].remark != null ? furnitures[index].remark : "";
                     return Center(
                       child: SizedBox(
                         width: deviceWidth,
@@ -109,7 +113,7 @@ class _RecordSizePageState extends State<RecordSizePage> {
                                     ),
                                   ),
                                   Container(
-                                    padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
+                                    padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
                                     alignment: Alignment.bottomLeft,
                                     child: Table(
                                       defaultColumnWidth: IntrinsicColumnWidth(),
@@ -126,7 +130,7 @@ class _RecordSizePageState extends State<RecordSizePage> {
                                               width: 16,
                                             ),
                                             Text(
-                                              '${furnitures[index].width.toString()} cm',
+                                              '$furnitureWidthStr cm',
                                               style: TextStyle(
                                                 fontSize: 16,
                                               ),
@@ -145,7 +149,7 @@ class _RecordSizePageState extends State<RecordSizePage> {
                                             width: 16,
                                           ),
                                           Text(
-                                            '${furnitures[index].height.toString()} cm',
+                                            '$furnitureHeightStr cm',
                                             style: TextStyle(
                                               fontSize: 16,
                                             ),
@@ -164,7 +168,7 @@ class _RecordSizePageState extends State<RecordSizePage> {
                                               width: 16,
                                             ),
                                             Text(
-                                              '${furnitures[index].depth.toString()} cm',
+                                              '$furnitureDepthStr cm',
                                               style: TextStyle(
                                                 fontSize: 16,
                                               ),
@@ -176,10 +180,10 @@ class _RecordSizePageState extends State<RecordSizePage> {
                                     ),
                                   ),
                                   Container(
-                                    padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
+                                    padding: EdgeInsets.fromLTRB(25, 0, 25, 10),
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      '備考: ${furnitures[index].remark}',
+                                      '備考: $furnitureRemark',
                                       style: TextStyle(
                                         fontSize: 16,
                                       ),

@@ -16,35 +16,30 @@ Future<void> inputFurnitureSizeDialog(BuildContext context, {Furniture? furnitur
         var furnitureHeight = null;
         var furnitureDepth = null;
         var furnitureRemark = null;
-        String? initialFurnitureName = "";
-        String? initialFurnitureWidth = "";
-        String? initialFurnitureHeight = "";
-        String? initialFurnitureDepth = "";
-        String? initialFurnitureRemark = "";
         if (furniture != null) {
           // ignore: unnecessary_null_comparison
-          initialFurnitureName = furniture.name != null ? furniture.name : "";
-          initialFurnitureWidth = furniture.width != null ? furniture.width.toString() : "";
-          initialFurnitureHeight = furniture.height != null ? furniture.height.toString() : "";
-          initialFurnitureDepth = furniture.depth != null ? furniture.depth.toString() : "";
-          initialFurnitureRemark = furniture.remark != null ? furniture.remark : "";
+          furnitureName = furniture.name != null ? furniture.name : "";
+          furnitureWidth = furniture.width != null ? furniture.width.toString() : "";
+          furnitureHeight = furniture.height != null ? furniture.height.toString() : "";
+          furnitureDepth = furniture.depth != null ? furniture.depth.toString() : "";
+          furnitureRemark = furniture.remark != null ? furniture.remark : "";
         }
         final TextEditingController _furnitureNameController =
-        new TextEditingController(text: initialFurnitureName);
+        new TextEditingController(text: furnitureName);
         final TextEditingController _furnitureWidthController =
-        new TextEditingController(text: initialFurnitureWidth);
+        new TextEditingController(text: furnitureWidth);
         final TextEditingController _furnitureHeightController =
-        new TextEditingController(text: initialFurnitureHeight);
+        new TextEditingController(text: furnitureHeight);
         final TextEditingController _furnitureDepthController =
-        new TextEditingController(text: initialFurnitureDepth);
+        new TextEditingController(text: furnitureDepth);
         final TextEditingController _furnitureRemarkController =
-        new TextEditingController(text: initialFurnitureRemark);
+        new TextEditingController(text: furnitureRemark);
         return SingleChildScrollView(
           child: AlertDialog(
             title: Text("寸法を記録"),
             content: ConstrainedBox(
               constraints: BoxConstraints(
-                maxHeight: 300.0,
+                maxHeight: 350.0,
               ),
               child: Form(
                 key: _formKey,
@@ -215,13 +210,24 @@ Future<void> inputFurnitureSizeDialog(BuildContext context, {Furniture? furnitur
                         parsedDepth = null;
                       }
                     }
-                    FurnitureRepository.create(
-                      name: furnitureName,
-                      width: parsedWidth,
-                      height: parsedHeight,
-                      depth: parsedDepth,
-                      remark: furnitureRemark,
-                    );
+                    if (furniture == null) {
+                      FurnitureRepository.create(
+                        name: furnitureName,
+                        width: parsedWidth,
+                        height: parsedHeight,
+                        depth: parsedDepth,
+                        remark: furnitureRemark,
+                      );
+                    } else {
+                      FurnitureRepository.update(
+                        id: furniture.id,
+                        name: furnitureName,
+                        width: parsedWidth,
+                        height: parsedHeight,
+                        depth: parsedDepth,
+                        remark: furnitureRemark,
+                      );
+                    }
                     Navigator.pop(context);
                   }
                 },
