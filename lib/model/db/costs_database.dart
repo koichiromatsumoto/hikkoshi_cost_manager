@@ -57,21 +57,42 @@ class CostsDatabase {
       )
     ''';
 
-    String furnituresSql = '''
-      CREATE TABLE furnitures(
+    String todosSql = '''
+      CREATE TABLE todos(
         id INTEGER PRIMARY KEY,
         name TEXT NOT NULL,
-        width INTEGER,
-        height INTEGER,
-        depth INTEGER,
-        remark TEXT,
+        deadline TEXT,
+        is_done TEXT NOT NULL,
         created_at TEXT NOT NULL,
         updated_at TEXT NOT NULL
       )
     ''';
 
+    String photoFoldersSql = '''
+      CREATE TABLE photo_folders(
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+      )
+    ''';
+
+    String photosSql = '''
+      CREATE TABLE photos(
+        id INTEGER PRIMARY KEY,
+        photo_folders_id INTEGER NOT NULL,
+        text TEXT,
+        file_path TEXT NOT NULL,
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL,
+        foreign key (photo_folders_id) references photo_folders(id)
+      )
+    ''';
+
     await db.execute(costsSql);
-    await db.execute(furnituresSql);
+    await db.execute(todosSql);
+    await db.execute(photoFoldersSql);
+    await db.execute(photosSql);
     defaultCosts.forEach((cost) async {
       await db.insert("costs", toMap(cost));
     });

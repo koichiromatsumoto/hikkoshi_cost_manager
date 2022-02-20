@@ -21,6 +21,7 @@ class _CostManagePageState extends State<CostManagePage> {
   void initState(){
     final CostsDatabase instance = CostsDatabase.instance;
     final db = instance.database;
+    super.initState();
   }
 
   @override
@@ -44,7 +45,7 @@ class _CostManagePageState extends State<CostManagePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("引越しの初期費用管理"),
+        title: Text("初期費用の管理"),
         centerTitle: true,
       ),
       body: futureBuilder,

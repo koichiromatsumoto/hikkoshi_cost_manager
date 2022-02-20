@@ -1,24 +1,21 @@
-class Furniture {
-  Furniture({
+class Todo {
+  Todo({
     required this.id,
     required this.name,
-    this.width,
-    this.height,
-    this.depth,
-    this.remark,
+    this.deadline,
+    required this.isDone,
     required this.createdAt,
     required this.updatedAt,
   }) : assert(id != null),
         assert(name != null),
+        assert(isDone != null),
         assert(createdAt != null),
         assert(updatedAt != null);
 
   final int id;
   final String name;
-  final int? width;
-  final int? height;
-  final int? depth;
-  final String? remark;
+  final DateTime? deadline;
+  final String isDone;
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -30,24 +27,20 @@ class Furniture {
   Map<String, dynamic> toMap() => {
     "id": id,
     "name": name,
-    "width": width,
-    "height": height,
-    "depth": depth,
-    "remark": remark,
+    "deadline": deadline!.toUtc().toIso8601String(),
+    "is_done": isDone,
     "created_at": createdAt.toUtc().toIso8601String(),
     "updated_at": updatedAt.toUtc().toIso8601String(),
   };
 
-  factory Furniture.fromMap(Map<String, dynamic> json) => Furniture(
+  factory Todo.fromMap(Map<String, dynamic> json) => Todo(
     id: json["id"],
     name: json["name"],
-    width: json["width"],
-    height: json["height"],
-    depth: json["depth"],
-    remark: json["remark"],
+    deadline: json["deadline"] != "" ? DateTime.parse(json["deadline"]).toLocal() : null,
+    isDone: json["is_done"],
     createdAt: DateTime.parse(json["created_at"]).toLocal(),
     updatedAt: DateTime.parse(json["updated_at"]).toLocal(),
   );
 
-  static List<Furniture> mainCache = [];
+  static List<Todo> mainCache = [];
 }

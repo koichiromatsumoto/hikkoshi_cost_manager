@@ -34,13 +34,11 @@ dependencies:
   # 状態保持
   hooks_riverpod:
 
-  # 以下を追加
   sqflite: ^2.0.0+3
   # app_database.dartの「join」で使用する
   path: 1.8.0
   path_provider:
-  # Memoのid生成で使用する
-  uuid: ^3.0.4
+  image_picker:
 
 dev_dependencies:
   flutter_test:

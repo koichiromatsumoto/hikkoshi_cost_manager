@@ -2,7 +2,9 @@
     package="com.example.hikkoshi_cost_manager">
    <application
         android:label="hikkoshi_cost_manager"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:requestLegacyExternalStorage="true">
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

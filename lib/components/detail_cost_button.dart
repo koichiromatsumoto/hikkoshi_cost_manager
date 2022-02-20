@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hikkoshi_cost_manager/model/entity/costs.dart';
-import 'package:hikkoshi_cost_manager/screen/costs/detail_furniture_cost.dart';
-import 'package:hikkoshi_cost_manager/screen/costs/detail_other_cost.dart';
 import 'package:hikkoshi_cost_manager/screen/costs/detail_rent_cost.dart';
 
 class DetailCostButton extends StatelessWidget {
@@ -62,10 +60,4 @@ Widget returnPage(String text) {
     default:
       return DetailRentCostPage(CostType.rent);
   }
-}
-
-Border flexBorder() {
-  return Border.all(
-    color: Colors.grey,
-  );
 }

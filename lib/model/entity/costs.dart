@@ -10,7 +10,6 @@ class Cost {
     required this.createdAt,
     required this.updatedAt,
     required this.type,
-    this.total
   }) : assert(id != null),
         assert(name != null),
         assert(createdAt != null),
@@ -25,7 +24,6 @@ class Cost {
   final DateTime createdAt;
   final DateTime updatedAt;
   final String? type;
-  final String? total;
 
   int get getId => id;
   String get getName => '$name';

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hikkoshi_cost_manager/screen/costs/cost_manage_page.dart';
 import 'package:hikkoshi_cost_manager/screen/record_photo/record_photo_page.dart';
-import 'package:hikkoshi_cost_manager/screen/record_size/record_size_page.dart';
+import 'package:hikkoshi_cost_manager/screen/record_todo/record_todo_page.dart';
 import 'package:hikkoshi_cost_manager/state/navigation_history_provider.dart';
 import 'package:hooks_riverpod/all.dart';
 
@@ -20,7 +20,7 @@ class MainPage extends StatelessWidget {
                       BottomNavigationBarItem(
                           icon: Icon(CupertinoIcons.money_yen_circle), label: '初期費用'),
                       BottomNavigationBarItem(
-                          icon: Icon(CupertinoIcons.square_list), label: '寸法記録'),
+                          icon: Icon(CupertinoIcons.square_list), label: 'やること'),
                       BottomNavigationBarItem(
                           icon: Icon(CupertinoIcons.rectangle_paperclip), label: '入居時記録'),
                     ],
@@ -35,7 +35,7 @@ class MainPage extends StatelessWidget {
                                   builder: (_) =>
                                   <Widget>[
                                     CostManagePage(),
-                                    RecordSizePage(),
+                                    RecordTodoPage(),
                                     RecordPhotoPage(),
                                   ][index]
                               )

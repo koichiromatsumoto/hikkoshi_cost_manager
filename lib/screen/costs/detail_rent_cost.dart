@@ -123,8 +123,10 @@ class _DetailRentCostPageState extends State<DetailRentCostPage> {
             ElevatedButton(
               child: const Text('初期費用を追加'),
               style: ElevatedButton.styleFrom(
-                primary: Colors.lightBlue,
+                primary: Colors.blueAccent,
                 onPrimary: Colors.white,
+                elevation: 5,
+                shadowColor: Colors.deepOrangeAccent,
               ),
               onPressed: () {
                 if (isEnabled == true) {
